@@ -57,16 +57,12 @@ export default {
       var randomIndex;
       var shuffledList;
 
-      // Clone the original array into myRandomizedList (shallow copy of array)
       shuffledList = array.slice(0)
 
-      // Randomize elements within the myRandomizedList - the shallow copy of original array
-      // While there remain elements to shuffle...
       while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
-        // And swap it with the current element.
+        
         temporaryValue = shuffledList[currentIndex];
         shuffledList[currentIndex] = shuffledList[randomIndex];
         shuffledList[randomIndex] = temporaryValue;
