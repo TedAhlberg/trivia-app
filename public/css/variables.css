@@ -1,0 +1,7 @@
+:root {
+/* --- Timer variables --- */
+  --timer-height: 20px;
+  --timer-width: 100%;
+  --timer-background-color: lightgray;
+  --timer-color: green;
+}
