@@ -26,14 +26,13 @@ export default {
       result: [{
         question: ""
       }],
-      answers: [{
-      }]
+      answers: [{}]
     }
   },
 
   methods: {
     handleResult(res) {
-      var temparr =[];
+      var temparr = [];
       this.result = res.data.results[0];
 
       var i;
@@ -49,11 +48,32 @@ export default {
         correct: true
       });
 
-      this.answers = temparr;
+      this.answers = this.shuffleList(temparr);
 
-      console.log(this.answers);
-      console.log(this.result);
     },
+    shuffleList: function(array) {
+      var currentIndex = array.length;
+      var temporaryValue;
+      var randomIndex;
+      var shuffledList;
+
+      // Clone the original array into myRandomizedList (shallow copy of array)
+      shuffledList = array.slice(0)
+
+      // Randomize elements within the myRandomizedList - the shallow copy of original array
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = shuffledList[currentIndex];
+        shuffledList[currentIndex] = shuffledList[randomIndex];
+        shuffledList[randomIndex] = temporaryValue;
+      }
+      return shuffledList;
+    },
+
 
     newQuestion() {
       axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
@@ -64,8 +84,6 @@ export default {
 
   created() {
     this.newQuestion();
-
-
   }
 }
 </script>
