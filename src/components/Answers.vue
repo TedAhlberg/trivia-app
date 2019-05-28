@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="answerList ">
-    <Answer v-bind:answer="answers.correct_answer"></Answer>
-     <div v-for="answer in answers.incorrect_answers">
+     <div v-for="answer in answers">
       <Answer v-bind:answer="answer"/>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -15,12 +15,14 @@ export default {
     Answer
   },
   props: ["answers"],
-}
+  methods:{}
+  }
+
+
 </script>
 
 <style lang="css" scoped>
 .answerList{
-
 }
 
 </style>

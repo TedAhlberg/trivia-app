@@ -1,6 +1,6 @@
 <template lang="html">
 <div class="answerItem">
- {{answer}}
+  <h2 @click="checkAnswer()">{{answer.answer}}</h2>
 </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
   components: {
   },
   props: ["answer"],
+  methods:{
+    checkAnswer(){
+      console.log(this.answer.correct); 
+    }
+  }
 }
 </script>
 
@@ -19,5 +24,12 @@ export default {
   background: #f4f4f4;
   padding: 10px;
   border-bottom: 1px #ccc dotted;
+  cursor:pointer;
+  }
+  .correct_answer{
+    background: green;
+  }
+  .incorrect_answer{
+    background: red;
   }
 </style>
