@@ -1,7 +1,7 @@
 <template>
 <div id="app">
- <Timer />
-  <input type="button" v-on:click="newQuestion" value="New Question"/>
+  <Timer />
+  <input type="button" v-on:click="newQuestion" value="New Question" />
   <Question v-bind:question="result.question"></Question>
   <Answers v-bind:answers="result"></Answers>
 </div>
@@ -25,8 +25,8 @@ export default {
     return {
       result: [{
         question: "",
-        correct_answer:"",
-        incorrect_answers:[]
+        correct_answer: "",
+        incorrect_answers: []
       }],
     }
   },
