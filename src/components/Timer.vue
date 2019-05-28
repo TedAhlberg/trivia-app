@@ -30,7 +30,7 @@ export default {
       }
     },
     stopTimer: function() {
-      if (this.running){
+      if (this.running) {
         clearInterval(interval);
         this.running = false;
       }
@@ -53,6 +53,7 @@ export default {
   margin: 20px auto auto auto;
   height: var(--timer-height);
   background-color: lightgray;
+  border-radius: 7px;
   -webkit-box-shadow: inset 0 0 10px gray;
 }
 
@@ -60,6 +61,7 @@ export default {
   height: var(--timer-height);
   background-color: green;
   -webkit-box-shadow: inset 0 0 8px darkgreen;
+  border-radius: 7px;
   -webkit-transition: width 0.1s;
   transition-timing-function: linear;
 }
