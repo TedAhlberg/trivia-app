@@ -3,7 +3,7 @@
   <Timer />
   <input type="button" v-on:click="newQuestion" value="New Question" />
   <Question v-bind:question="result.question"></Question>
-  <Answers v-bind:answers="result"></Answers>
+  <Answers v-bind:answers="answers"></Answers>
 </div>
 </template>
 
@@ -24,17 +24,37 @@ export default {
   data() {
     return {
       result: [{
-        question: "",
-        correct_answer: "",
-        incorrect_answers: []
+        question: ""
       }],
+      answers: [{
+      }]
     }
   },
+
   methods: {
     handleResult(res) {
+      var temparr =[];
       this.result = res.data.results[0];
+
+      var i;
+
+      for (i = 0; i < this.result.incorrect_answers.length; i++) {
+        temparr[i] = ({
+          answer: this.result.incorrect_answers[i],
+          correct: false
+        });
+      }
+      temparr[i] = ({
+        answer: this.result.correct_answer,
+        correct: true
+      });
+
+      this.answers = temparr;
+
+      console.log(this.answers);
       console.log(this.result);
     },
+
     newQuestion() {
       axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
         .then(res => this.handleResult(res))
