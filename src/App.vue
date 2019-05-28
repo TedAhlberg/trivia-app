@@ -3,7 +3,7 @@
   <Timer />
   <input type="button" v-on:click="newQuestion" value="New Question" />
   <Question v-bind:question="result.question"></Question>
-  <Answers v-bind:answers="result"></Answers>
+  <Answers v-bind:answers="answers"></Answers>
 </div>
 </template>
 
@@ -24,17 +24,53 @@ export default {
   data() {
     return {
       result: [{
-        question: "",
-        correct_answer: "",
-        incorrect_answers: []
+        question: ""
       }],
+      answers: [{}]
     }
   },
+
   methods: {
     handleResult(res) {
+      var temparr = [];
       this.result = res.data.results[0];
-      console.log(this.result);
+
+      var i;
+
+      for (i = 0; i < this.result.incorrect_answers.length; i++) {
+        temparr[i] = ({
+          answer: this.result.incorrect_answers[i],
+          correct: false
+        });
+      }
+      temparr[i] = ({
+        answer: this.result.correct_answer,
+        correct: true
+      });
+
+      this.answers = this.shuffleList(temparr);
+
     },
+    shuffleList: function(array) {
+      var currentIndex = array.length;
+      var temporaryValue;
+      var randomIndex;
+      var shuffledList;
+
+      shuffledList = array.slice(0)
+
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        temporaryValue = shuffledList[currentIndex];
+        shuffledList[currentIndex] = shuffledList[randomIndex];
+        shuffledList[randomIndex] = temporaryValue;
+      }
+      return shuffledList;
+    },
+
+
     newQuestion() {
       axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
         .then(res => this.handleResult(res))
@@ -44,8 +80,6 @@ export default {
 
   created() {
     this.newQuestion();
-
-
   }
 }
 </script>
