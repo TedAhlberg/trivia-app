@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <Timer />
-  <input type="button" v-on:click="newQuestion" value="New Question"/>
+  <input type="button" v-on:click="newQuestion" value="New Question" />
   <Question v-bind:question="result.question"></Question>
   <Answers v-bind:answers="result"></Answers>
 </div>
@@ -13,11 +13,11 @@ import Timer from './components/Timer.vue'
 import Question from './components/Question.vue'
 import Answers from './components/Answers.vue'
 
+
 export default {
   name: 'app',
   components: {
-
-  Timer,
+    Timer,
     Question,
     Answers
   },
@@ -25,8 +25,8 @@ export default {
     return {
       result: [{
         question: "",
-        correct_answer:"",
-        incorrect_answers:[]
+        correct_answer: "",
+        incorrect_answers: []
       }],
     }
   },
