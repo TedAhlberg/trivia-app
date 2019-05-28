@@ -62,7 +62,7 @@ export default {
       while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        
+
         temporaryValue = shuffledList[currentIndex];
         shuffledList[currentIndex] = shuffledList[randomIndex];
         shuffledList[randomIndex] = temporaryValue;

@@ -1,20 +1,16 @@
 <template lang="html">
   <div class="questionBox">
-      <h1>{{question}}</h1>
+      <h1 v-html="question"></h1>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Question",
-  components: {
-  },
+  components: {},
   props: ["question"],
+
 }
-
-
-
 </script>
 
 <style lang="css" scoped>
