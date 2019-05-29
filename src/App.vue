@@ -2,8 +2,19 @@
 <div id="app">
   <Timer />
   <input type="button" v-on:click="newQuestion" value="New Question" />
-  <Question v-bind:question="result.question"></Question>
-  <Answers v-bind:answers="answers"></Answers>
+  <input type="button" v-on:click="show=!show" value="Show" />
+  <transition name="fade">
+    <div v-if="!show" name="categories-view">
+      <h1>BAJS</h1>
+    </div>
+
+  </transition>
+  <transition name="fade">
+    <div v-if="show" name="question-view">
+      <Question v-bind:question="result.question"></Question>
+      <Answers v-bind:answers="answers"></Answers>
+    </div>
+  </transition>
 </div>
 </template>
 
@@ -26,9 +37,11 @@ export default {
       result: [{
         question: ""
       }],
-      answers: [{}]
+      answers: [{}],
+      show: false,
     }
   },
+
 
   methods: {
     handleResult(res) {
@@ -74,7 +87,7 @@ export default {
 
 
     newQuestion() {
-      axios.get('https://opentdb.com/api.php?amount=1&type=multiple')
+      axios.get('https://opentdb.com/api.php?amount=1')
         .then(res => this.handleResult(res))
         .catch(err => console.log(err));
     }
@@ -95,4 +108,13 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+
 </style>
