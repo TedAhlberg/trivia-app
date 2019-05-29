@@ -1,7 +1,7 @@
 <template lang="html">
-<div class="answerItem" @click="emitAnswer($event)">
-  <h2 v-html="answer.string"></h2>
-</div>
+  <div class="answerItem" @click="emitAnswer($event)">
+    <h2 v-html="answer.string"></h2>
+  </div>
 </template>
 
 <script>
@@ -13,7 +13,6 @@ export default {
   methods:{
     emitAnswer(){
       this.$emit("clicked", this.answer);
-
     }
   }
 }
