@@ -14,7 +14,7 @@ var interval = null;
 
 export default {
   name: 'Timer',
-  data: function() {
+  data() {
     return {
       running: false,
       timerWidth: 100
@@ -30,7 +30,7 @@ export default {
       }
     },
     stopTimer: function() {
-      if (this.running){
+      if (this.running) {
         clearInterval(interval);
         this.running = false;
       }
@@ -43,23 +43,20 @@ export default {
 </script>
 
 <style scoped>
-#main {
-  --timer-height: 20px;
-  --timer-width: 70%;
-}
-
 #timer-wrapper {
   width: var(--timer-width);
   margin: 20px auto auto auto;
   height: var(--timer-height);
-  background-color: lightgray;
+  background-color: var(--timer-background-color);
+  border-radius: 7px;
   -webkit-box-shadow: inset 0 0 10px gray;
 }
 
 #timer {
   height: var(--timer-height);
-  background-color: green;
+  background-color: var(--timer-color);
   -webkit-box-shadow: inset 0 0 8px darkgreen;
+  border-radius: 7px;
   -webkit-transition: width 0.1s;
   transition-timing-function: linear;
 }
