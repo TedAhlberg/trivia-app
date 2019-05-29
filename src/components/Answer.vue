@@ -1,6 +1,6 @@
 <template lang="html">
-<div class="answerItem">
-  <h2 @click="checkAnswer()"  v-html="answer.answer"></h2>
+<div class="answerItem" @click="emitAnswer($event)">
+  <h2 v-html="answer.string"></h2>
 </div>
 </template>
 
@@ -11,8 +11,9 @@ export default {
   },
   props: ["answer"],
   methods:{
-    checkAnswer(){
-      console.log(this.answer.correct);
+    emitAnswer(){
+      this.$emit("clicked", this.answer);
+
     }
   }
 }

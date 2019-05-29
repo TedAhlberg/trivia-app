@@ -39,12 +39,14 @@ export default {
 
       for (i = 0; i < this.result.incorrect_answers.length; i++) {
         temparr[i] = ({
-          answer: this.result.incorrect_answers[i],
+          id: i,
+          string: this.result.incorrect_answers[i],
           correct: false
         });
       }
       temparr[i] = ({
-        answer: this.result.correct_answer,
+        id: i,
+        string: this.result.correct_answer,
         correct: true
       });
 
