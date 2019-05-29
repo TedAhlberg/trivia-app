@@ -1,12 +1,12 @@
 <template>
-<div id="main">
-  <div id="timer-wrapper">
-    <div id="timer" :style="{ width: timerWidth + '%' }"></div>
+  <div id="main-timer">
+    <div id="timer-wrapper">
+      <div id="timer" :style="{ width: timerWidth + '%' }"></div>
+    </div>
+    <button type="button" @click="startTimer()">Start</button>
+    <button type="button" @click="stopTimer()">Stop</button>
+    <button type="button" @click="resetTimer()">Reset</button>
   </div>
-  <button type="button" @click="startTimer()">Start</button>
-  <button type="button" @click="stopTimer()">Stop</button>
-  <button type="button" @click="resetTimer()">Reset</button>
-</div>
 </template>
 
 <script>
