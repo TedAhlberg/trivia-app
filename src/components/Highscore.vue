@@ -1,9 +1,9 @@
 <template lang="html">
   <div class="highscore-box">
     <h1>This is a list of highscore</h1>
-    <h3 v-for="highscore in highscorelist">{{highscore.user}}   {{highscore.score}} </h3>
+    <h3 v-for="highscore in highscorelist">
+      {{ highscore.user }} {{ highscore.score }} </h3>
   </div>
-
 </template>
 
 <script>
@@ -25,8 +25,6 @@ export default {
       this.highscorelist=getHighscore();
     }
   }
-
-
 }
 </script>
 
@@ -37,8 +35,4 @@ export default {
     border-radius: 10px;
     color:white;
   }
-
-
-
-
 </style>
