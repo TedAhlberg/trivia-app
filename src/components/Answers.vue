@@ -49,9 +49,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.answerList{
-}
-
 .correct_answer{
   background: green;
 }
