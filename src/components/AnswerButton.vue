@@ -21,6 +21,8 @@ export default {
 <style lang="css" scoped>
 
 .answerItem{
+  color:white;
+  font-weight: bold;
   margin: auto;
   width:30%;
   background: #f4f4f4;
