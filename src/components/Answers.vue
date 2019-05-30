@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="answerList ">
-      <Answer
+      <AnswerButton
         v-for="answer in answers"
         :key="answer.id"
         :answer="answer"
@@ -13,11 +13,11 @@
 
 <script>
 import Vue from "vue";
-import Answer from "./Answer.vue";
+import AnswerButton from "./AnswerButton.vue";
 export default {
   name: "Answers",
   components: {
-    Answer
+    AnswerButton
   },
   data() {
     return {
@@ -27,18 +27,18 @@ export default {
   props: ["answers"],
   methods: {
     handleEmit(answer) {
-      console.log(answer.correct)
-      if(answer.correct){
+      if (answer.correct) {
         Vue.set(this.answerClasses, answer.id, "correct");
-      }else{
+        this.$emit("answered", true);
+      } else {
         Vue.set(this.answerClasses, answer.id, "incorrect");
-        var correctAnswer=this.answers.filter(answer => answer.correct==true);
+        var correctAnswer = this.answers.filter(answer => answer.correct == true);
         var correctAnswerId = correctAnswer[0].id;
-              Vue.set(this.answerClasses, correctAnswerId, "correct");
+        Vue.set(this.answerClasses, correctAnswerId, "correct");
+        this.$emit("answered", false);
       }
-      console.log(this.answerClasses)
     },
-    objectClass(id){
+    objectClass(id) {
       return {
         correct_answer: this.answerClasses[id] == "correct",
         incorrect_answer: this.answerClasses[id] == "incorrect"
