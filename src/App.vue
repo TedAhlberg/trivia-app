@@ -1,20 +1,35 @@
 <template>
 <div id="app">
-  <Question />
+  <Header/>
+  <StartScreen v-if="showStartScreen" @clicked="startQuiz"/>
+  <Question v-if="showQuestion" />
 </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Timer from './components/Timer.vue'
 import Question from './components/Question.vue'
-import Answers from './components/Answers.vue'
-
+import StartScreen from './components/StartScreen.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'app',
   components: {
-    Question
+    Header,
+    Question,
+    StartScreen
+  },
+  data(){
+    return{
+      showQuestion: false,
+      showStartScreen: true
+    }
+  },
+  methods:{
+    startQuiz(username){
+      console.log(username);
+      this.showQuestion=!this.showQuestion;
+      this.showStartScreen=!this.showStartScreen;
+    }
   }
 }
 </script>
