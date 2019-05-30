@@ -31,10 +31,11 @@ export default {
 <style lang="css" scoped>
 
 .input-row{
-   margin: auto;
-  margin-top: 3%;
+  margin: auto;
+  padding-top: 3%;
   display: flex;
   width: 60%;
+
 }
 
 
@@ -45,8 +46,6 @@ input[type="text"] {
 }
 .wrap{
   background-color: lightblue;
-  position: absolute;
-   width: 80%;
    height: 100px;
    border-radius: 10px;
 }

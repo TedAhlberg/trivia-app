@@ -1,14 +1,17 @@
 <template lang="html">
   <div>
     <UserInput class="user-input" @clicked="handleEmit"/>
+    <Highscore/>
   </div>
 </template>
 <script>
 import UserInput from './UserInput.vue'
+import Highscore from './Highscore.vue'
 export default {
 
   components: {
-    UserInput
+    UserInput,
+    Highscore
   },
   methods: {
     handleEmit(username) {
@@ -21,10 +24,6 @@ export default {
 <style lang="css" scoped>
 
 .user-input{
-margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  margin-top: 3%;
 }
 </style>
