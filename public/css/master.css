@@ -16,3 +16,7 @@
   user-select: none;
   cursor: default;
 }
+
+.emoji{
+  opacity: 0.6;
+}
