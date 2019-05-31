@@ -1,8 +1,14 @@
 <template lang="html">
-  <div class="highscore-box">
-    <h1>This is a list of highscore</h1>
-    <h3 v-for="highscore in highscorelist">
-      {{ highscore.user }} {{ highscore.score }} </h3>
+  <div id="main-highscore">
+    <h2>Highscores</h2>
+    <ol type="1">
+      <li v-for="highscore in highscorelist">
+        <h3>
+          <span id="username"> {{ highscore.user }} </span>
+          <span id="score"> {{ highscore.score }} </span>
+        </h3>
+      </li>
+    </ol>
   </div>
 </template>
 
@@ -12,8 +18,7 @@ import getHighscore from "../script/highscore-handler.js";
 export default {
   data() {
     return {
-      highscorelist: [
-      ]
+      highscorelist: []
     }
   },
   created() {
@@ -22,17 +27,32 @@ export default {
   },
   methods: {
     loadScore() {
-      this.highscorelist=getHighscore();
+      this.highscorelist = getHighscore();
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-  .highscore-box{
-    background-color: lightpink;
-    height: 500px;
-    border-radius: 10px;
-    color:white;
+  #main-highscore{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 190px;
+    color: lightpink;
   }
+
+  ol{
+    padding-left: 20px;
+  }
+
+  li{
+    text-align: left;
+  }
+
+  #score{
+    float: right;
+  }
+
+
 </style>

@@ -1,11 +1,15 @@
 :root {
+/* --- Main colors --- */
+  --green: #6bbd84;
+  --blue: #85c8e3;
+
 /* --- Header variables --- */
   --header-color: #6bbd84;
 
 /* --- UserInput variables --- */
   --user-input-main-color: lightblue;
   --user-input-darker-color: #85c8e3;
-  --user-input-button-size: 110px;
+  --user-input-button-size: 100px;
 
 /* --- Timer variables --- */
   --timer-height: 20px;

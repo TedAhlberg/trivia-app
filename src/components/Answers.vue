@@ -50,7 +50,7 @@ export default {
 
 <style lang="css" scoped>
 .correct_answer{
-  background: green;
+  background: var(--green);
 }
 .incorrect_answer{
   background: red;

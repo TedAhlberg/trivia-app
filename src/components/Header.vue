@@ -9,7 +9,6 @@ export default {}
 </script>
 
 <style lang="css" scoped>
-
 #main-header {
   height: 70px;
   margin: none;
@@ -18,8 +17,7 @@ export default {}
 
 #main-header h1 {
   padding-top: 1%;
-  color: var(--header-color);
+  color: var(--green);
   font-size: 40px;
-
 }
 </style>

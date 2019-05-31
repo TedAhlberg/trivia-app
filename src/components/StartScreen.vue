@@ -22,7 +22,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
 .user-input{
   margin-top: 3%;
 }
