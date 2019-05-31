@@ -2,14 +2,16 @@
 <div id="app">
   <Header/>
   <!-- <StartScreen/> -->
-  <Question/>
+  <!-- <Question/> -->
+  <Categories/>
 </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import StartScreen from './components/StartScreen.vue'
-import Question from './components/Question.vue'
+import Header from "./components/Header.vue"
+import StartScreen from "./components/StartScreen.vue"
+import Question from "./components/Question.vue"
+import Categories from "./components/Categories.vue"
 
 export default {
   name: 'app',
@@ -17,6 +19,7 @@ export default {
     Header,
     Question,
     StartScreen,
+    Categories,
   },
   data(){
     return{

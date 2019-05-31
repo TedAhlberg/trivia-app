@@ -10,7 +10,6 @@
 import BaseButton from "./BaseButton.vue"
 
 export default {
-  name: "Answer",
   components: {
     BaseButton
   },
