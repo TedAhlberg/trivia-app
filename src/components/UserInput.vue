@@ -1,33 +1,48 @@
 <template lang="html">
   <div id="main-user-input">
     <input
-      class="user-input"type="text"
-      v-model="username"
-      placeholder="Insert Your Name"
-    />
-    <button
       class="user-input"
-      type="button"
-      @click="emitName($event)"
-    >Start</button>
+      type="text"
+      v-model="username"
+      :placeholder="placeholder"
+      @input="checkInput"
+      @keyup.enter="emitName"
+    />
+
+    <BaseButton
+    id="start-button"
+      :class="{ disabled: buttonDisabled }"
+      :placeholder="buttonText"
+      :disabled="buttonDisabled"
+    />
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-export default {
+import BaseButton from "./BaseButton.vue"
 
+export default {
+  components: {
+    BaseButton
+  },
   data() {
     return {
       username: "",
+      placeholder: "Insert Your Name",
+      buttonText: "Start",
+      buttonDisabled: true
     }
   },
   methods: {
     emitName() {
-      if (this.username.length > 1) {
-        console.log(this.username)
+      if (!this.buttonDisabled)
         this.$emit("clicked", this.username);
-      }
+    },
+    checkInput() {
+      if (this.username.length > 1)
+        this.buttonDisabled = false;
+      else
+        this.buttonDisabled = true;
     }
   }
 }
@@ -55,33 +70,23 @@ input[type="text"] {
   font-size: 16px;
 }
 
-::placeholder{
-  opacity: 1;
+input:focus::placeholder{
+  opacity: 0;
 }
 
-button{
-  font-family: "Montserrat", sans-serif;
-  font-size: 23px;
-  margin-top: 15px;
+::placeholder{
+  opacity: 0.7;
+}
+
+#start-button{
+  background-color: var(--user-input-main-color);
   width: var(--user-input-button-size);
   height: var(--user-input-button-size);
   border-radius: 50%;
-  border: 0px;
-  background-color: var(--user-input-main-color);
-  color: white;
-  cursor: pointer;
-  transition: background 250ms ease-in-out,
-              transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-button:hover,
-button:focus {
-    background: var(--user-input-darker-color);
-}
-
-button:active {
-    transform: scale(0.97);
+#start-button:hover:enabled,
+#start-button:focus:enabled{
+  background-color: var(--user-input-darker-color);
 }
 </style>
