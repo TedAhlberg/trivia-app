@@ -16,7 +16,7 @@ export default {
   components: {
     Header,
     Question,
-    StartScreen
+    StartScreen, 
   },
   data(){
     return{

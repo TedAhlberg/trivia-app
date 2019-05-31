@@ -11,3 +11,9 @@
   text-align: center;
   color: #2c3e50;
 }
+
+.disabled{
+  opacity: 0.5;
+  user-select: none;
+  cursor: default;
+}

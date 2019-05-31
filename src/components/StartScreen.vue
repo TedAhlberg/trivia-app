@@ -7,8 +7,8 @@
 <script>
 import UserInput from './UserInput.vue'
 import Highscore from './Highscore.vue'
-export default {
 
+export default {
   components: {
     UserInput,
     Highscore
