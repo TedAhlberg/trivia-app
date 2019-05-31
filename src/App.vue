@@ -1,22 +1,22 @@
 <template>
 <div id="app">
   <Header/>
-  <StartScreen v-if="showStartScreen" @clicked="startQuiz"/>
-  <Question v-if="showQuestion" />
+  <!-- <StartScreen/> -->
+  <Question/>
 </div>
 </template>
 
 <script>
-import Question from './components/Question.vue'
-import StartScreen from './components/StartScreen.vue'
 import Header from './components/Header.vue'
+import StartScreen from './components/StartScreen.vue'
+import Question from './components/Question.vue'
 
 export default {
   name: 'app',
   components: {
     Header,
     Question,
-    StartScreen, 
+    StartScreen,
   },
   data(){
     return{

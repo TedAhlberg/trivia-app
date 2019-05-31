@@ -12,8 +12,9 @@
     <BaseButton
     id="start-button"
       :class="{ disabled: buttonDisabled }"
-      :placeholder="buttonText"
+      :text="buttonText"
       :disabled="buttonDisabled"
+      @click="emitName"
     />
   </div>
 </template>
@@ -50,15 +51,17 @@ export default {
 
 <style lang="css" scoped>
 input{
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
   max-width: 250px;
-  height: 20px;
+  height: 25px;
   font-family: sans-serif;
   text-align: center;
-  color: var(--user-input-darker-color);
+  color: var(--blue);
   border: 5px solid var(--user-input-main-color);
   border-radius: 15px;
 }
@@ -87,6 +90,6 @@ input:focus::placeholder{
 
 #start-button:hover:enabled,
 #start-button:focus:enabled{
-  background-color: var(--user-input-darker-color);
+  background-color: var(--blue);
 }
 </style>

@@ -1,10 +1,7 @@
 <template lang="html">
   <div id="main-question">
-    <input type="button" v-on:click="newQuestion" value="New Question" />
-    <QuestionText :question="question"/>
-    <Answers
-      :answers="answers"
-    />
+    <Title :text="question"/>
+    <Answers :answers="answers"/>
     <Timer />
   </div>
 </template>
@@ -13,14 +10,14 @@
 import axios from "axios";
 import handleResult from "../script/questions-handler.js";
 
-import QuestionText from "../components/QuestionText.vue";
+import Title from "../components/Title.vue";
 import Answers from "../components/Answers.vue";
 import Timer from "../components/Timer.vue";
 
 export default {
   name: "Question",
   components: {
-    QuestionText,
+    Title,
     Answers,
     Timer
   },
