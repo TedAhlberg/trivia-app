@@ -1,10 +1,13 @@
 <template lang="html">
   <div id="main-categories">
     <Title :text="title" />
-    <CategoryButton
-      v-for="category in categories"
-      :category="category"
-    />
+    <div id="main-category-buttons">
+      <CategoryButton
+        v-for="category in categories"
+        :category="category"
+        @clicked="handleEmit"
+      />
+  </div>
   </div>
 </template>
 
@@ -19,7 +22,7 @@ export default {
     Title,
     CategoryButton
   },
-  data(){
+  data() {
     return {
       title: "Choose a category",
       selectedCategory: "",
@@ -27,12 +30,20 @@ export default {
     }
   },
   methods: {
-    buttonHTML(category){
+    buttonHTML(category) {
       var html = ""
+    },
+    handleEmit(value) {
+      this.$emit("categorySubmited", value.apiId);
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
+  #main-category-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
 </style>

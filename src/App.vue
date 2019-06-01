@@ -1,9 +1,20 @@
 <template>
 <div id="app">
   <Header/>
-  <!-- <StartScreen/> -->
-  <!-- <Question/> -->
-  <Categories/>
+  <transition name="fade">
+  <StartScreen
+    v-if="showStartScreen"
+    @userSubmited="userSubmited"
+  />
+  <Categories
+    v-if="showCategories"
+    @categorySubmited="categorySubmited"
+  />
+  <Question
+    v-if="showQuestion"
+    :category="category"
+  />
+  </transition>
 </div>
 </template>
 
@@ -23,19 +34,34 @@ export default {
   },
   data(){
     return{
+      showStartScreen: true,
+      showCategories: false,
       showQuestion: false,
-      showStartScreen: true
+
+      username: "",
+      category: "",
     }
   },
   methods:{
-    startQuiz(username){
-      console.log(username);
-      this.showQuestion=!this.showQuestion;
-      this.showStartScreen=!this.showStartScreen;
+    userSubmited(value){
+      this.username = value;
+      this.showStartScreen = false;
+      setTimeout(() => this.showCategories = true, 500)
+    },
+    categorySubmited(value){
+      this.category = value;
+      this.showCategories  = false;
+      setTimeout(() => this.showQuestion = true, 500)
     }
   }
 }
 </script>
 
 <style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>

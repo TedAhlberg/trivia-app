@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="answerList ">
+  <div id="main-answers">
       <AnswerButton
         v-for="answer in answers"
         :key="answer.id"
@@ -49,6 +49,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#main-answers{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
 .correct_answer{
   background: var(--green);
 }

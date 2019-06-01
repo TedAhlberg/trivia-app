@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     handleEmit(username) {
-      this.$emit('clicked', username);
+      this.$emit('userSubmited', username);
     }
   }
 }

@@ -1,7 +1,10 @@
 <template lang="html">
   <div id="main-question">
     <Title :text="question"/>
-    <Answers :answers="answers"/>
+    <Answers
+      :answers="answers"
+      @answered=""
+    />
     <Timer />
   </div>
 </template>
@@ -16,6 +19,7 @@ import Timer from "../components/Timer.vue";
 
 export default {
   name: "Question",
+  props: ["category"],
   components: {
     Title,
     Answers,
@@ -24,16 +28,22 @@ export default {
   data() {
     return {
       question: "",
-      answers: []
+      answers: [],
     }
   },
   created() {
     this.newQuestion();
   },
   methods: {
+    handleAnswer(value){
+      
+    },
     newQuestion() {
       var self = this;
-      axios.get('https://opentdb.com/api.php?amount=1')
+      var httpRequest = "https://opentdb.com/api.php?amount=1&category="
+        + this.category;
+
+      axios.get(httpRequest)
         .then(function(res) {
           self.question = res.data.results[0].question;
           self.answers = handleResult(res);
