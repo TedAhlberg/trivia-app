@@ -5,15 +5,14 @@
       type="text"
       v-model="username"
       :placeholder="placeholder"
-      @input="checkInput"
       @keyup.enter="emitName"
     />
 
     <BaseButton
     id="start-button"
-      :class="{ disabled: buttonDisabled }"
+      :class="{ disabled: username.length < 2 }"
       :text="buttonText"
-      :disabled="buttonDisabled"
+      :disabled="username.length < 2"
       @click="emitName"
     />
   </div>
@@ -28,22 +27,15 @@ export default {
   },
   data() {
     return {
-      username: "",
+      username: sessionStorage.getItem("username"),
       placeholder: "Insert Your Name",
       buttonText: "Start",
-      buttonDisabled: true
     }
   },
   methods: {
     emitName() {
-      if (!this.buttonDisabled)
+      if (this.username.length > 2)
         this.$emit("clicked", this.username);
-    },
-    checkInput() {
-      if (this.username.length > 1)
-        this.buttonDisabled = false;
-      else
-        this.buttonDisabled = true;
     }
   }
 }
