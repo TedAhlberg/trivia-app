@@ -27,14 +27,20 @@ export default {
   },
   data() {
     return {
-      username: sessionStorage.getItem("username"),
+      username: "",
       placeholder: "Insert Your Name",
       buttonText: "Start",
     }
   },
+  created(){
+    var sessionUsername = sessionStorage.getItem("username");
+    console.log(sessionUsername);
+    if(sessionUsername != null && sessionUsername.length > 1)
+      this.username = sessionUsername;
+  },
   methods: {
     emitName() {
-      if (this.username.length > 2)
+      if (this.username.length > 1)
         this.$emit("clicked", this.username);
     }
   }
