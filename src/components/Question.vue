@@ -105,7 +105,7 @@ export default {
           self.answers = handleResult(res);
           self.questionFetched = true;
           self.startTimer();
-        }).catch(err => console.log(err));
+        }).catch();
     }
   }
 }
