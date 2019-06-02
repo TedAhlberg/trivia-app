@@ -5,6 +5,7 @@
         :key="answer.id"
         :answer="answer"
         :class="objectClass(answer.id)"
+        :disabled="disabled"
         @clicked="handleEmit"
       />
   </div>
@@ -21,10 +22,11 @@ export default {
   },
   data() {
     return {
-      answerClasses: []
+      answerClasses: [],
+      answered: false
     }
   },
-  props: ["answers"],
+  props: ["answers", "disabled"],
   methods: {
     handleEmit(answer) {
       if (answer.correct) {
@@ -38,10 +40,12 @@ export default {
         var correctAnswerId = correctAnswer[0].id;
         Vue.set(this.answerClasses, correctAnswerId, "correct");
         this.$emit("answered", false);
+        this.answered = true;
       }
     },
     objectClass(id) {
       return {
+        disabled: this.answered,
         correct_answer: this.answerClasses[id] == "correct",
         incorrect_answer: this.answerClasses[id] == "incorrect"
       }
@@ -69,7 +73,7 @@ export default {
   background: var(--green);
 }
 .incorrect_answer{
-  background: red;
+  background: var(--red);
 }
 
 </style>

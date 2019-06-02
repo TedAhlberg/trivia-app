@@ -37,4 +37,8 @@ export default {
      padding: 23px;
    }
   }
+  .answerButton:hover:enabled,
+  .answerButton:focus:enabled{
+    background-color: var(--blue);
+  }
 </style>

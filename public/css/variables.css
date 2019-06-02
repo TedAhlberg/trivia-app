@@ -2,6 +2,8 @@
 /* --- Main colors --- */
   --green: #6bbd84;
   --blue: #85c8e3;
+  --red: #ff8080;
+  --pink: #ffb6c1;
 
 /* --- Header variables --- */
   --header-color: #6bbd84;
@@ -14,6 +16,7 @@
 /* --- Timer variables --- */
   --timer-height: 20px;
   --timer-width: 100%;
-  --timer-background-color: lightgray;
-  --timer-color: #6bbd84;
+  --timer-background-color: #f0eeec;
+  --timer-color: #90cda3;
+  --timer-darker-color: #6d9975;
 }
