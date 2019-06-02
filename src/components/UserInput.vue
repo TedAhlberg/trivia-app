@@ -1,33 +1,47 @@
 <template lang="html">
   <div id="main-user-input">
     <input
-      class="user-input"type="text"
-      v-model="username"
-      placeholder="Insert Your Name"
-    />
-    <button
       class="user-input"
-      type="button"
-      @click="emitName($event)"
-    >Start</button>
+      type="text"
+      v-model="username"
+      :placeholder="placeholder"
+      @keyup.enter="emitName"
+    />
+
+    <BaseButton
+    id="start-button"
+      :class="{ disabled: username.length < 2 }"
+      :text="buttonText"
+      :disabled="username.length < 2"
+      @click="emitName"
+    />
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-export default {
+import BaseButton from "./BaseButton.vue"
 
+export default {
+  components: {
+    BaseButton
+  },
   data() {
     return {
       username: "",
+      placeholder: "Insert Your Name",
+      buttonText: "Start",
     }
+  },
+  created(){
+    var sessionUsername = sessionStorage.getItem("username");
+    console.log(sessionUsername);
+    if(sessionUsername != null && sessionUsername.length > 1)
+      this.username = sessionUsername;
   },
   methods: {
     emitName() {
-      if (this.username.length > 1) {
-        console.log(this.username)
+      if (this.username.length > 1)
         this.$emit("clicked", this.username);
-      }
     }
   }
 }
@@ -35,15 +49,17 @@ export default {
 
 <style lang="css" scoped>
 input{
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
   max-width: 250px;
-  height: 20px;
+  height: 25px;
   font-family: sans-serif;
   text-align: center;
-  color: var(--user-input-darker-color);
+  color: var(--blue);
   border: 5px solid var(--user-input-main-color);
   border-radius: 15px;
 }
@@ -55,33 +71,23 @@ input[type="text"] {
   font-size: 16px;
 }
 
-::placeholder{
-  opacity: 1;
+input:focus::placeholder{
+  opacity: 0;
 }
 
-button{
-  font-family: "Montserrat", sans-serif;
-  font-size: 23px;
-  margin-top: 15px;
+::placeholder{
+  opacity: 0.7;
+}
+
+#start-button{
+  background-color: var(--user-input-main-color);
   width: var(--user-input-button-size);
   height: var(--user-input-button-size);
   border-radius: 50%;
-  border: 0px;
-  background-color: var(--user-input-main-color);
-  color: white;
-  cursor: pointer;
-  transition: background 250ms ease-in-out,
-              transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-button:hover,
-button:focus {
-    background: var(--user-input-darker-color);
-}
-
-button:active {
-    transform: scale(0.97);
+#start-button:hover:enabled,
+#start-button:focus:enabled{
+  background-color: var(--blue);
 }
 </style>

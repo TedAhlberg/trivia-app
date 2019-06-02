@@ -1,10 +1,11 @@
 <template lang="html">
-  <div class="answerList ">
+  <div id="main-answers">
       <AnswerButton
         v-for="answer in answers"
         :key="answer.id"
         :answer="answer"
         :class="objectClass(answer.id)"
+        :disabled="disabled"
         @clicked="handleEmit"
       />
   </div>
@@ -21,10 +22,11 @@ export default {
   },
   data() {
     return {
-      answerClasses: []
+      answerClasses: [],
+      answered: false
     }
   },
-  props: ["answers"],
+  props: ["answers", "disabled"],
   methods: {
     handleEmit(answer) {
       if (answer.correct) {
@@ -36,10 +38,12 @@ export default {
         var correctAnswerId = correctAnswer[0].id;
         Vue.set(this.answerClasses, correctAnswerId, "correct");
         this.$emit("answered", false);
+        this.answered = true;
       }
     },
     objectClass(id) {
       return {
+        disabled: this.answered,
         correct_answer: this.answerClasses[id] == "correct",
         incorrect_answer: this.answerClasses[id] == "incorrect"
       }
@@ -49,11 +53,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#main-answers{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
 .correct_answer{
-  background: green;
+  background: var(--green);
 }
 .incorrect_answer{
-  background: red;
+  background: var(--red);
 }
 
 </style>

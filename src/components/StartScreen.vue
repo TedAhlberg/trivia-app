@@ -7,22 +7,21 @@
 <script>
 import UserInput from './UserInput.vue'
 import Highscore from './Highscore.vue'
-export default {
 
+export default {
   components: {
     UserInput,
     Highscore
   },
   methods: {
     handleEmit(username) {
-      this.$emit('clicked', username);
+      this.$emit('userSubmited', username);
     }
   }
 }
 </script>
 
 <style lang="css" scoped>
-
 .user-input{
   margin-top: 3%;
 }

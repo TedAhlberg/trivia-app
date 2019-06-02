@@ -9,17 +9,22 @@ export default {}
 </script>
 
 <style lang="css" scoped>
-
 #main-header {
-  height: 70px;
   margin: none;
   border-radius: 10px;
 }
 
 #main-header h1 {
   padding-top: 1%;
-  color: var(--header-color);
-  font-size: 40px;
+  color: var(--green);
+}
+h1 {
+  font-size: 9vw;
+}
 
+@media screen and (min-width: 500px) {
+  h1{
+    font-size: 45px;
+  }
 }
 </style>
