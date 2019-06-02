@@ -92,6 +92,7 @@ export default {
       this.showQuestion  = false;
       this.showPlayAgain = false;
       setTimeout(() => this.showStartScreen = true, 600);
+      this.points = 0;
     }
   }
 }
