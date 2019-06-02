@@ -47,5 +47,9 @@ export default {
      padding: 23px;
    }
   }
+  .categoryButton:hover:enabled,
+  .categoryButton:focus:enabled{
+    background-color: var(--blue);
+  }
 
 </style>

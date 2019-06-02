@@ -34,7 +34,7 @@ export default {
       var html = ""
     },
     handleEmit(value) {
-      this.$emit("categorySubmited", value.apiId);
+      this.$emit("categorySubmited", value);
     }
   }
 }

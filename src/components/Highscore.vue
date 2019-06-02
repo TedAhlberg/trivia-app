@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="main-highscore">
-    <h2>Highscores</h2>
+    <h2 v-if="showHighscores">Highscores</h2>
     <ol type="1">
       <li v-for="highscore in highscorelist">
         <h3>
@@ -18,16 +18,15 @@ import getHighscore from "../script/highscore-handler.js";
 export default {
   data() {
     return {
-      highscorelist: []
+      highscorelist: [],
+      showHighscores: false
     }
   },
-  created() {
-    localStorage.setItem('highscores', JSON.stringify(this.highscorelist));
-    this.loadScore();
-  },
-  methods: {
-    loadScore() {
-      this.highscorelist = getHighscore();
+  created(){
+    var scores = getHighscore();
+    if(Array.isArray(scores) && scores.length > 0){
+      this.showHighscores = true;
+      this.highscorelist = scores;
     }
   }
 }
@@ -39,7 +38,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     width: 190px;
-    color: lightpink;
+    color: var(--pink);
   }
 
   ol{
