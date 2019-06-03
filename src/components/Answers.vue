@@ -30,9 +30,11 @@ export default {
   methods: {
     handleEmit(answer) {
       if (answer.correct) {
+        this.playCorrect();
         Vue.set(this.answerClasses, answer.id, "correct");
         this.$emit("answered", true);
       } else {
+        this.playFalse();
         Vue.set(this.answerClasses, answer.id, "incorrect");
         var correctAnswer = this.answers.filter(answer => answer.correct == true);
         var correctAnswerId = correctAnswer[0].id;
@@ -47,6 +49,14 @@ export default {
         correct_answer: this.answerClasses[id] == "correct",
         incorrect_answer: this.answerClasses[id] == "incorrect"
       }
+    },
+    playCorrect() {
+        var track = new Audio(require('../sound/Crowd.wav'));
+        track.play();
+    },
+    playFalse() {
+        var track = new Audio(require('../sound/Sad_Trombone.wav'));
+        track.play();
     }
   }
 }
