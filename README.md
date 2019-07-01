@@ -5,6 +5,7 @@
 4. Run git bash command: npm run serve, in the extracted directory
 5. Visit the local URL given in git bash
 
+
 #Motivering av ramverk
 
 Till vårt projekt har vi valt att arbeta med ramverket Vue. Andra ramverk vi har övervägt är React och Angular.
